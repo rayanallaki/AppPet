@@ -16,7 +16,7 @@ public partial class FrmCadServico : ContentPage
 		{ "Vacinação - R$ 90,00 - 20 minutos", ("Vacinação", 90m, 20) }
 	};
 
-	public ObservableCollection<Servico> ServicosCadastrados { get; } = new();
+	public ObservableCollection<Servico> ServicosDoPet => petSelecionado.Servicos;
 
 	public FrmCadServico(Pet pet, Agendamento agendamento)
 	{
@@ -43,14 +43,16 @@ public partial class FrmCadServico : ContentPage
 		{
 			lblValorServico.Text = "Selecione um serviço";
 			lblDuracaoServico.Text = "Selecione um serviço";
+			btnSalvarServico.IsEnabled = false;
 			return;
 		}
 
 		lblValorServico.Text = $"R$ {dadosServico.Valor:F2}";
 		lblDuracaoServico.Text = $"{dadosServico.DuracaoMinutos} minutos";
+		btnSalvarServico.IsEnabled = true;
 	}
 
-	private async void ButtonCadastrarServico(object? sender, EventArgs e)
+	private async void ButtonSalvarServico(object? sender, EventArgs e)
 	{
 		var servicoSelecionado = pickerServico.SelectedItem?.ToString() ?? "";
 		var descricao = txtDescricao.Text?.Trim() ?? "";
@@ -67,7 +69,7 @@ public partial class FrmCadServico : ContentPage
 
 		var servico = new Servico
 		{
-			Id = ServicosCadastrados.Count + 1,
+			Id = petSelecionado.Servicos.Count + 1,
 			Nome = dadosServico.Nome,
 			Descricao = descricao,
 			Valor = dadosServico.Valor,
@@ -76,12 +78,13 @@ public partial class FrmCadServico : ContentPage
 			Agendamento = agendamentoSelecionado
 		};
 
-		ServicosCadastrados.Add(servico);
+		petSelecionado.Servicos.Add(servico);
+		pickerServico.SelectedIndex = -1;
 		txtDescricao.Text = string.Empty;
 
 		await DisplayAlertAsync(
 			"Sucesso",
-			"Serviço cadastrado com sucesso!",
+			$"Serviço salvo para {petSelecionado.Nome} com sucesso!",
 			"OK");
 	}
 }

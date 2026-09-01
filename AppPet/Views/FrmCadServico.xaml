@@ -30,8 +30,10 @@
             <Label x:Name="lblDuracaoServico" Text="Selecione um serviço" />
 
             <Button
-                Text="Cadastrar serviço"
-                Clicked="ButtonCadastrarServico" />
+                x:Name="btnSalvarServico"
+                Text="Salvar serviço para o pet"
+                IsEnabled="False"
+                Clicked="ButtonSalvarServico" />
         </VerticalStackLayout>
 
         <Label
@@ -43,7 +45,7 @@
             Grid.Row="2"
             x:Name="collectionViewServicos"
             EmptyView="Nenhum serviço cadastrado."
-            ItemsSource="{Binding ServicosCadastrados}">
+            ItemsSource="{Binding ServicosDoPet}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Border

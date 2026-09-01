@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace AppPet.Models
@@ -35,6 +36,8 @@ namespace AppPet.Models
         }
 
         public string Porte { get; set; } = string.Empty;
+
+        public ObservableCollection<Servico> Servicos { get; } = new();
 
     }
 }

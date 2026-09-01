@@ -1,3 +1,5 @@
 <Solution>
-  <Project Path="AppPet/AppPet.csproj" />
+  <Project Path="AppPet/AppPet.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
 </Solution>
