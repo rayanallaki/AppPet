@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppPet.Views.FrmCadUsuario"
+             Title="FrmCadUsuario">
+    <VerticalStackLayout>
+        <Label 
+            Text="Cadastrar Usuário"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Label 
+            Text="Nome: "
+            />
+        <Entry 
+            x:Name="txtNome"
+        />
+        
+        <Label
+            Text="CPF: "
+            />
+        <Entry
+            x:Name="txtCPF"
+            />
+
+        <Label
+            Text="Endereço: "
+            />
+        <Entry
+            x:Name="txtEndereco"
+            />
+            
+        <Label
+            Text="Telefone: "
+            />
+        <Entry
+            x:Name="txtTelefone"
+            />
+        
+        <Label
+            Text="Email: "
+            />
+        <Entry
+            x:Name="txtEmail"
+            />
+        
+        <Label
+            Text="Senha: "
+            />
+        <Entry
+            x:Name="txtSenha"
+            IsPassword="True"
+            />
+        
+        <Button 
+            Text="Cadastrar"
+            Clicked="ButtonCadastrar"
+            />
+
+    </VerticalStackLayout>
+</ContentPage>

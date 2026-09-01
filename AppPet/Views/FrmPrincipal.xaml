@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppPet.Views.FrmPrincipal"
+             Title="FrmPrincipal"
+             NavigationPage.HasNavigationBar="False">
+    <VerticalStackLayout>
+        <Label 
+            Text="SEJA BEM VINDO AO VANDERPET"
+        />
+        <Label
+            Text="Usuario"
+            />
+        <Entry 
+            x:Name="txtUsuario"
+        />
+        <Label
+            Text="Senha"
+            />
+        <Entry
+            x:Name="txtSenha"
+            IsPassword="True"
+            />
+
+
+        <Button 
+            Text="Login"
+            Clicked="ButtonLogin"
+            />
+        
+        <Button 
+            Text="Cadastrar"
+            Clicked="ButtonCadastro"
+            />
+    </VerticalStackLayout>
+</ContentPage>

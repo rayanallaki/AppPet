@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppPet.Views.FrmAgendamento"
+             Title="Agendamento"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid
+        Padding="20"
+        RowDefinitions="Auto,Auto,*,Auto"
+        RowSpacing="12">
+        <VerticalStackLayout Spacing="12">
+            <Label
+                Text="NOVO AGENDAMENTO"
+                FontAttributes="Bold" />
+
+            <DatePicker
+                x:Name="datePickerAgendamento" />
+
+            <TimePicker
+                x:Name="timePickerAgendamento"
+                Format="HH:mm" />
+
+            <Button
+                Text="Adicionar agendamento"
+                Clicked="ButtonAdicionarAgendamento" />
+        </VerticalStackLayout>
+
+        <Label
+            Grid.Row="1"
+            Text="LISTA DE AGENDAMENTOS"
+            FontAttributes="Bold" />
+
+        <CollectionView
+            Grid.Row="2"
+            x:Name="collectionViewAgendamento"
+            EmptyView="Nenhum agendamento cadastrado."
+            ItemsSource="{Binding Agendamentos}"
+            SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border
+                        Stroke="Gray"
+                        StrokeThickness="1"
+                        StrokeShape="RoundRectangle 5"
+                        Padding="10"
+                        Margin="0,0,0,8">
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="{Binding Id, StringFormat='Agendamento #{0}'}" FontAttributes="Bold" />
+                            <Label Text="{Binding DataHora, StringFormat='Data e hora: {0:dd/MM/yyyy HH:mm}'}" />
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button
+            Grid.Row="3"
+            Text="Cadastrar pet"
+            Clicked="ButtonCadastrarPet" />
+    </Grid>
+</ContentPage>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppPet.Views.FrmCadPet"
+             Title="Cadastro de pet"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid
+        Padding="20"
+        RowDefinitions="*,Auto,*,Auto"
+        RowSpacing="12">
+
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Spacing="12">
+                <Label
+                    Text="CADASTRO DE PET"
+                    FontAttributes="Bold" />
+
+                <Label Text="Nome:" />
+                <Entry x:Name="txtNomePet" />
+
+                <Label Text="Espécie:" />
+                <Picker x:Name="pickerEspecie"
+                    Title="Selecione a espécie"
+                    SelectedIndexChanged="PickerEspecie_SelectedIndexChanged" />
+
+                <Label Text="Raça:" />
+                <Picker x:Name="pickerRaca"
+                    Title="Selecione a raça"
+                    IsEnabled="False" />
+
+                <Label Text="Nascimento:" />
+                <DatePicker x:Name="datePickerNascimento" />
+
+                <Label Text="Peso (kg):" />
+                <Entry
+                    x:Name="txtPeso"
+                    Keyboard="Numeric" />
+
+                <Label Text="Porte:" />
+                <Picker
+                    x:Name="pickerPorte"
+                    Title="Selecione o porte">
+                    <Picker.Items>
+                        <x:String>Pequeno - 40 minutos - R$60</x:String>
+                        <x:String>Médio - 60 minutos - R$80</x:String>
+                        <x:String>Grande - 90 minutos - R$100</x:String>
+                    </Picker.Items>
+                </Picker>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <Label
+            Grid.Row="1"
+            Text="LISTA DE PETS"
+            FontAttributes="Bold" />
+
+        <CollectionView
+            Grid.Row="2"
+            x:Name="collectionViewCadastroPet"
+            EmptyView="Nenhum pet cadastrado."
+            ItemsSource="{Binding CadastroPets}"
+            SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border
+                        Stroke="Gray"
+                        StrokeThickness="1"
+                        StrokeShape="RoundRectangle 5"
+                        Padding="10"
+                        Margin="0,0,0,8">
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="{Binding id, StringFormat='Pet #{0}'}" FontAttributes="Bold" />
+                            <Label Text="{Binding Nome, StringFormat='Nome: {0}'}" />
+                            <Label Text="{Binding Especie, StringFormat='Espécie: {0}'}" />
+                            <Label Text="{Binding Raca, StringFormat='Raça: {0}'}" />
+                            <Label Text="{Binding DataNascimento, StringFormat='Nascimento: {0:dd/MM/yyyy}'}" />
+                            <Label Text="{Binding Idade, StringFormat='Idade: {0}'}" />
+                            <Label Text="{Binding Peso, StringFormat='Peso: {0} kg'}" />
+                            <Label Text="{Binding Porte, StringFormat='Porte: {0}'}" />
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <VerticalStackLayout Grid.Row="3" Spacing="8">
+            <Button
+                Grid.Row="3"
+                Text="Cadastrar pet"
+                Clicked="ButtonCadastrarPet" />
+
+            <Button
+                Grid.Row="3"
+                Text="Cadastrar serviço"
+                Clicked="ButtonCadastrarServico" />
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
