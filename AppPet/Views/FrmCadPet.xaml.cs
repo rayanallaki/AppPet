@@ -94,6 +94,7 @@ public partial class FrmCadPet : ContentPage
     pickerRaca.IsEnabled = true;
 	}
 
+	// teste
 	private async void ButtonCadastrarServico(object? sender, EventArgs e)
 	{
 		var petSelecionado = collectionViewCadastroPet.SelectedItem as Pet;
